@@ -4,8 +4,12 @@ import com.spring.crud.mongo.springCrudMongo.model.User;
 import com.spring.crud.mongo.springCrudMongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImplementation implements UserService{
@@ -37,6 +41,13 @@ public class UserServiceImplementation implements UserService{
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public List<User> findByIdAndName(String id, String name) {
+            return userRepository.findByIdAndName(id,name);
+
     }
 
 

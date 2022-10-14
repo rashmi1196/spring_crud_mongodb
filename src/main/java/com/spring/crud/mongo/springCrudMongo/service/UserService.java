@@ -15,8 +15,6 @@ public interface UserService {
 
     List<User> findAllUsers();
 
-    @Transactional
-    List<User> findByEmailAddressAndLastname(String id, String name);{
-        return learnerRepository.findByEmailAddressAndLastname(email,last_name);
-    }
+
+    List<User> findByIdAndName(String id, String name);
 }

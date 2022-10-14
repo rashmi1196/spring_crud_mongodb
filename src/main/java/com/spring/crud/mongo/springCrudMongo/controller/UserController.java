@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -36,6 +37,11 @@ public class UserController {
     public ResponseEntity<?> deleteUserById(@PathVariable("id") String id){
         userService.deleteByUserId(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/findByIdAndName")
+    public List<User> findByIdAndLName(@RequestBody Map<String,String> response){
+        return userService.findByIdAndName(response.get("id").toString(),response.get("name").toString());
     }
 
 }
